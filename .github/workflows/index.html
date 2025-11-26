@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة ربوع بلادي لاستيراد المواد الغذائية</title>
+    
+    <!-- استيراد خط تجوال العربي ليعطي طابعاً عصرياً -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* تخصيصات إضافية */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* ألوان الهوية البصرية */
+        .bg-brand-red { background-color: #b91c1c; }
+        .text-brand-red { color: #b91c1c; }
+        .bg-brand-yellow { background-color: #facc15; }
+        .text-brand-yellow { color: #ca8a04; }
+        
+        /* تأثيرات التحويم والتنقل */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: #facc15;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* تحسينات التمرير السلس */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* لضمان عدم تغطية العنوان بواسطة القائمة العلوية */
+        }
+
+        /* تأثيرات الحركة (Animations) */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* تطبيق الحركات */
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fade-in-right {
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+        .animate-fade-in-left {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* تأخير الحركات */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* حركة للبطاقات عند التحويم */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- القائمة العلوية (Navbar) -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- الشعار -->
+            <a href="#home" class="flex items-center gap-3">
+                <!-- مكان الشعار: يمكنك استبدال src برابط الصورة التي رفعتها -->
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center border-2 border-red-700 text-red-700 font-bold text-xl overflow-hidden">
+                    <img src="logo.png" alt="شعار ربوع بلادي" class="w-full h-full object-cover"> 
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold text-brand-red leading-none">ربوع بلادي</h1>
+                    <span class="text-xs text-gray-500 font-bold tracking-wide">لاستيراد المواد الغذائية</span>
+                </div>
+            </a>
+
+            <!-- روابط القائمة (سطح المكتب) -->
+            <div class="hidden md:flex gap-8 text-lg font-medium">
+                <a href="#home" class="nav-link text-gray-700 hover:text-brand-red">الرئيسية</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-brand-red">من نحن</a>
+                <a href="#vision" class="nav-link text-gray-700 hover:text-brand-red">رؤيتنا</a>
+                <a href="#services" class="nav-link text-gray-700 hover:text-brand-red">خدماتنا</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-brand-red">تواصل معنا</a>
+            </div>
+
+            <!-- زر القائمة للجوال -->
+            <button class="md:hidden text-brand-red text-2xl focus:outline-none" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- قائمة الجوال (مخفية افتراضياً) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="flex flex-col p-4 space-y-3">
+                <a href="#home" class="block py-2 px-4 hover:bg-red-50 text-gray-700 rounded transition" onclick="toggleMenu()">الرئيسية</a>
+                <a href="#about" class="block py-2 px-4 hover:bg-red-50 text-gray-700 rounded transition" onclick="toggleMenu()">من نحن</a>
+                <a href="#vision" class="block py-2 px-4 hover:bg-red-50 text-gray-700 rounded transition" onclick="toggleMenu()">رؤيتنا</a>
+                <a href="#services" class="block py-2 px-4 hover:bg-red-50 text-gray-700 rounded transition" onclick="toggleMenu()">خدماتنا</a>
+                <a href="#contact" class="block py-2 px-4 hover:bg-red-50 text-gray-700 rounded transition" onclick="toggleMenu()">تواصل معنا</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section id="home" class="relative h-screen min-h-[600px] flex items-center justify-center bg-gray-900 text-white overflow-hidden">
+        <!-- صورة الخلفية -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542834323-5e02e5870494?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="خلفية لوجستية" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-900/90 to-black/60"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight animate-fade-in-up">
+                شركة <span class="text-yellow-400">ربوع بلادي</span><br>
+                لاستيراد المواد الغذائية واللحوم
+            </h2>
+            <p class="text-xl md:text-2xl mb-10 text-gray-200 max-w-3xl mx-auto font-light animate-fade-in-up delay-200">
+                الجودة التي تثق بها، من موانئ العالم إلى مائدتك. رواد استيراد اللحوم المجمدة والمواد الغذائية في المنطقة.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-400">
+                <a href="#services" class="px-8 py-3 bg-yellow-400 text-red-900 font-bold rounded-lg hover:bg-yellow-500 transition shadow-lg transform hover:-translate-y-1 animate-pulse-slow">
+                    خدماتنا
+                </a>
+                <a href="#contact" class="px-8 py-3 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-red-900 transition shadow-lg transform hover:-translate-y-1">
+                    تواصل معنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن (About Us) -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 inline-block relative">
+                    من نحن
+                    <span class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-yellow-400 rounded-full"></span>
+                </h2>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">تاريخ عريق ومستقبل واعد في عالم الغذاء</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 animate-fade-in-right">
+                    <div class="relative animate-float">
+                        <div class="absolute -top-4 -right-4 w-full h-full border-4 border-yellow-400 rounded-lg z-0"></div>
+                        <img src="logo.png" alt="عن الشركة" class="relative z-10 rounded-lg shadow-2xl w-full h-auto object-cover">
+                    </div>
+                </div>
+                <div class="md:w-1/2 space-y-6 animate-fade-in-left">
+                    <h3 class="text-2xl font-bold text-brand-red flex items-center gap-2">
+                        <i class="fas fa-award"></i> ربوع بلادي: الثقة، الجودة، والتميز
+                    </h3>
+                    <p class="text-gray-600 leading-8 text-lg text-justify">
+                        تأسست شركة ربوع بلادي لتكون حجر الزاوية في تأمين الأمن الغذائي المحلي. نحن متخصصون في استيراد أجود أنواع اللحوم الحمراء والبيضاء المجمدة، بالإضافة إلى تشكيلة واسعة من المواد الغذائية الأساسية.
+                    </p>
+                    <p class="text-gray-600 leading-8 text-lg text-justify">
+                        نتميز بعلاقاتنا القوية مع أكبر الموردين حول العالم، وبامتلاكنا لبنية تحتية لوجستية متطورة تضمن وصول المنتج للمستهلك بأفضل حالاته. شعارنا دائماً هو الجودة والالتزام بالمعايير الصحية الصارمة.
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الرؤية والرسالة (Vision) -->
+    <section id="vision" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 inline-block relative">
+                    رؤيتنا ورسالتنا
+                    <span class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-yellow-400 rounded-full"></span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- بطاقة الرؤية -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-red-600 card-hover animate-fade-in-right">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center text-red-700 mb-6 mx-auto animate-float">
+                        <i class="fas fa-eye text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">رؤيتنا</h3>
+                    <p class="text-gray-600 leading-relaxed text-center">
+                        أن نكون الخيار الأول والموثوق في ليبيا وشمال أفريقيا في مجال استيراد وتوزيع المواد الغذائية واللحوم، من خلال تقديم منتجات تجمع بين الجودة العالمية والسعر المناسب.
+                    </p>
+                </div>
+
+                <!-- بطاقة الرسالة -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-yellow-400 card-hover animate-fade-in-left">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 mb-6 mx-auto animate-float">
+                        <i class="fas fa-bullseye text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">رسالتنا</h3>
+                    <p class="text-gray-600 leading-relaxed text-center">
+                        توفير غذاء صحي وآمن لكل بيت، مع الالتزام الكامل بالمعايير الشرعية (الحلال) والصحية، وتطوير قطاع التخزين والتوزيع لضمان استدامة الإمدادات الغذائية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات (Services) -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 inline-block relative">
+                    خدماتنا
+                    <span class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-yellow-400 rounded-full"></span>
+                </h2>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">حلول متكاملة في عالم الاستيراد والتوزيع</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- خدمة 1 -->
+                <div class="group bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 card-hover animate-fade-in-up">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
+                        <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=800&auto=format&fit=crop" alt="لحوم" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="p-2 bg-red-100 text-red-700 rounded-lg ml-3"><i class="fas fa-snowflake"></i></div>
+                            <h3 class="text-xl font-bold text-gray-800">استيراد اللحوم المجمدة</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed">نستورد أجود أنواع اللحوم من مصادر موثوقة عالمياً، مذبوحة وفق الشريعة الإسلامية ومحفوظة بأحدث التقنيات.</p>
+                    </div>
+                </div>
+
+                <!-- خدمة 2 -->
+                <div class="group bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 card-hover animate-fade-in-up delay-200">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="تخزين" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="p-2 bg-yellow-100 text-yellow-700 rounded-lg ml-3"><i class="fas fa-warehouse"></i></div>
+                            <h3 class="text-xl font-bold text-gray-800">التخزين المبرد والجاف</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed">مستودعات ضخمة مجهزة بأحدث أنظمة التبريد والتحكم لضمان سلامة المخزون الغذائي.</p>
+                    </div>
+                </div>
+
+                <!-- خدمة 3 -->
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل (Contact) -->
+    <section id="contact" class="py-20 bg-gray-100 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 inline-block relative">
+                    تواصل معنا
+                    <span class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-yellow-400 rounded-full"></span>
+                </h2>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">نحن هنا للإجابة على استفساراتكم وتلبية طلباتكم</p>
+            </div>
+
+            <!-- معلومات الاتصال فقط، مركزة وبكامل العرض -->
+            <div class="max-w-3xl mx-auto">
+                <!-- معلومات الاتصال -->
+                <div class="space-y-8">
+                    <div class="bg-red-50 p-8 rounded-2xl border border-red-100 shadow-sm">
+                        <h3 class="text-2xl font-bold text-brand-red mb-8">بيانات الاتصال</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded-full shadow-sm text-brand-red ml-4">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">العنوان</h4>
+                                    <p class="text-gray-600 mb-1">طرابلس، ليبيا - الطريق الساحلي، بالقرب من الميناء</p>
+                                    <p class="text-gray-600">البيضاء، ليبيا - شارع العروبة</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded-full shadow-sm text-brand-red ml-4">
+                                    <i class="fas fa-phone-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">الهاتف</h4>
+                                    <!-- تم تحديث هذا الرقم بناءً على طلبك -->
+                                    <p class="text-gray-600" dir="ltr">+218 91 309 2785</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded-full shadow-sm text-brand-red ml-4">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-lg">البريد الإلكتروني</h4>
+                                    <p class="text-gray-600">info@reboua.ly</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- تم حذف شبكات التواصل -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر (Footer) -->
+    <footer class="bg-gray-900 text-white py-12 border-t-4 border-yellow-400">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-4">ربوع بلادي</h3>
+                    <p class="text-gray-400 leading-loose max-w-sm">
+                        شركة رائدة في مجال استيراد المواد الغذائية واللحوم المجمدة. نلتزم بأعلى معايير الجودة والسلامة الغذائية لتوفير الأفضل للمستهلك الليبي.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">روابط سريعة</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-yellow-400 transition">الرئيسية</a></li>
+                        <li><a href="#about" class="hover:text-yellow-400 transition">من نحن</a></li>
+                        <li><a href="#services" class="hover:text-yellow-400 transition">خدماتنا</a></li>
+                        <li><a href="#contact" class="hover:text-yellow-400 transition">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">ساعات العمل</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>السبت - الخميس: 9:00 ص - 6:00 م</li>
+                        <li>الجمعة: عطلة</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2024 شركة ربوع بلادي لاستيراد المواد الغذائية. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <!-- سكربت بسيط جداً لفتح وإغلاق القائمة في الجوال -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
